@@ -53,16 +53,38 @@ public class CalculatorUI extends JFrame {
         cargarHistorial();
     }
 
+    private void sumar(ActionEvent e) {
+        double n1 =  Double.parseDouble(txtNum1.getText());
+        double n2 =  Double.parseDouble(txtNum2.getText());
+        double resultado = n1+n2;
+        txtResultado.setText(String.valueOf(n1 + n2));
+    }
+
+    private void restar(ActionEvent e) {
+        double n1 =  Double.parseDouble(txtNum1.getText());
+        double n2 =  Double.parseDouble(txtNum2.getText());
+        txtResultado.setText(String.valueOf(n1 - n2));
+    }
+
+    private void guardar(ActionEvent e) {
+        try {
+            String op = txtResultado.getText().contains("-") ? "RESTA" : "SUMA";
+            double n1 = Double.parseDouble(txtNum1.getText());
+            double n2 = Double.parseDouble(txtNum2.getText());
+            double res = Double.parseDouble(txtResultado.getText());
+
+            OracleDAO dao = new OracleDAO();
+            dao.insertarOperacion(op, n1, n2, res);
+
+            JOptionPane.showMessageDialog(this, "Guardado en Oracle!");
+
+            cargarHistorial();
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+        }
+    }
+
     private void cargarHistorial() {
-    }
-
-    private void guardar(ActionEvent actionEvent) {
-    }
-
-    private void restar(ActionEvent actionEvent) {
-
-    }
-
-    private void sumar(ActionEvent actionEvent) {
     }
 }
