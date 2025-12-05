@@ -86,5 +86,17 @@ public class CalculatorUI extends JFrame {
     }
 
     private void cargarHistorial() {
+      /*  try {
+            OracleDAO dao = new OracleDAO();
+            model.setRowCount(0);
+            dao.obtenerHistorial().forEach(op ->
+                    model.addRow(new Object[]{
+                            op.getId, op.getOperacion(),
+                            op.getNum1(), op.getNum2(), op.getResultado()
+                    })
+            );
+        } catch (Exception ex) {
+            System.out.println("No se pudo cargar historial: " + ex.getMessage());
+        }*/
     }
 }
